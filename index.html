@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jquery-plug</title>
+</head>
+<body>
+	<a href="http://www.baidu.com">百度</a><br>
+	<a href="http://www.taobao.com">淘宝</a><br>
+	<a href="http://www.jd.com">京东</a><br>
+
+
+	<p>插件的书写 这是一个p标签<p>
+	<script type="text/javascript" src="jquery.min.js"></script>
+	<script type="text/javascript">
+		
+		$(function(){
+			//扩展  相当于函数
+			$.extend({
+				sayHello:function(name){
+					console.log('Hello,'+(name?name:"lb"+"!"));
+				}
+			})
+			$.sayHello("xz");
+			
+			//添加  处理dom元素/插件更好的运用
+			$.fn.pluginName=function(){
+				this.css("color","red");
+				this.each(function(){
+					$(this).append(' '+$(this).attr("href"));
+				})
+			}
+
+			$("a").pluginName();
+		})
+
+	</script>
+</body>
+</html>
